@@ -1,0 +1,16 @@
+prototype(Carbon.LinkHelper:Asset) < prototype(Neos.Fusion:Case) {
+	property = ${property ? property : 'link'}
+	read = ${q(node).property(this.property)}
+	asset = ${asset ? asset : this.read ? Neos.Link.convertUriToObject(this.read) : false}
+	@context.asset = ${this.asset}
+	@ignoreProperties = ${['property', 'read', 'asset']}
+
+	hasTitle {
+		condition = ${asset.title}
+		renderer = ${asset.title}
+	}
+	default {
+		condition = true
+		renderer = ${String.replace(String.replace(asset.resource.filename, '_', ' '), '.' + asset.resource.fileextension, '')}
+	}
+}

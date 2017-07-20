@@ -1,0 +1,8 @@
+prototype(Carbon.LinkHelper:TagName) < prototype(Neos.Fusion:Value) {
+	property = 'link'
+	linkTagName = 'a'
+	defaultTagName = 'span'
+
+	read = ${q(node).property(this.property)}
+	value = ${this.read ? this.linkTagName : this.defaultTagName}
+}

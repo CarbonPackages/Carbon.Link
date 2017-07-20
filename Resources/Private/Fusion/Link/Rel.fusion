@@ -1,0 +1,36 @@
+prototype(Carbon.LinkHelper:Rel) < prototype(Neos.Fusion:Value) {
+	property = ${property ? property : 'link'}
+	rel = 'noopener'
+
+	@context {
+		read = ${q(node).property(this.property)}
+		rel = ${this.rel}
+	}
+
+	value = Neos.Fusion:Case {
+		@context.linkType = Carbon.LinkHelper:Type {
+			read = ${read}
+		}
+		inBackend {
+			condition = ${node.context.inBackend}
+			renderer = false
+			@position = 'start 1'
+		}
+		isNode {
+			condition = ${linkType == 'node'}
+			renderer = false
+		}
+		isHash {
+			condition = ${linkType == 'hash'}
+			renderer = false
+		}
+		isExternal {
+			condition = ${linkType == 'external'}
+			renderer = ${rel}
+		}
+		default {
+			condition = true
+			renderer = false
+		}
+	}
+}

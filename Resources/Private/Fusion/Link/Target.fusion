@@ -1,0 +1,33 @@
+prototype(Carbon.LinkHelper:Target) < prototype(Neos.Fusion:Value) {
+	property = ${property ? property : 'link'}
+	target = ${Configuration.setting('Carbon.LinkHelper.externalTarget')}
+	assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.LinkHelper.assetExternal'))}
+
+	@context {
+		read = ${q(node).property(this.property)}
+		target = ${this.target}
+		assetExternal = ${this.assetExternal}
+	}
+
+	value = Neos.Fusion:Case {
+		@context.linkType = Carbon.LinkHelper:Type {
+			read = ${read}
+		}
+		isAsset {
+			condition = ${linkType == 'asset'}
+			renderer = Neos.Fusion:Value {
+				mediatype = ${String.toLowerCase(Neos.Link.convertUriToObject(read).resource.mediatype)}
+				regex = ${'(' + String.replace(assetExternal, ',', '|') + ')'}
+				value = ${String.pregMatch(this.mediatype, this.regex)[0] ? target : false}
+			}
+		}
+		isExternal {
+			condition = ${linkType == 'external'}
+			renderer = ${target}
+		}
+		default {
+			condition = true
+			renderer = false
+		}
+	}
+}

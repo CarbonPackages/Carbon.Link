@@ -1,0 +1,17 @@
+'Carbon.LinkHelper:Link':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        link:
+          label: Link
+          icon: icon-link
+  properties:
+    link:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: false
+        inspector:
+          group: link
+          editor: Neos.Neos/Inspector/Editors/LinkEditor

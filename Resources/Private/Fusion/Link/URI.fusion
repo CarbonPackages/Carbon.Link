@@ -1,0 +1,38 @@
+prototype(Carbon.LinkHelper:URI) < prototype(Neos.Fusion:Value) {
+	property = ${property ? property : 'link'}
+	backendLink = false
+	@context {
+		read = ${q(node).property(this.property)}
+		backendLink = ${this.backendLink}
+	}
+	value = Neos.Fusion:Case {
+		@context.linkType = Carbon.LinkHelper:Type {
+			read = ${read}
+		}
+		isBackend {
+			condition = ${node.context.inBackend && !backendLink ? true : false}
+			renderer = '#'
+		}
+		isNode {
+			condition = ${linkType == 'node'}
+			renderer = Neos.Neos:NodeUri {
+				@context.nodeObject = ${Neos.Link.convertUriToObject(read, node)}
+				node = ${q(nodeObject).closest(Configuration.setting('Carbon.LinkHelper.instanceOfDocument')).get(0)}
+				section = ${q(nodeObject).is(Configuration.setting('Carbon.LinkHelper.instanceOfDocument')) ? false : Configuration.setting('Carbon.LinkHelper.prependIdentifier') + nodeObject.identifier}
+			}
+		}
+		isAssetOrExternal {
+			condition = ${read}
+			renderer = ${read}
+			renderer.@process.convertUris = ConvertUris {
+				forceConversion = true
+			}
+		}
+		noLink {
+			condition = true
+			renderer = false
+		}
+	}
+
+	@if.isValidLink = Carbon.LinkHelper:Valid
+}

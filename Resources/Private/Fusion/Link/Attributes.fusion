@@ -1,0 +1,10 @@
+prototype(Carbon.LinkHelper:Attributes) < prototype(Neos.Fusion:Attributes) {
+	property = 'link'
+	@context.property = ${this.property}
+	@ignoreProperties = ${['property']}
+
+	rel = Carbon.LinkHelper:Rel
+	target = Carbon.LinkHelper:Target
+	href = Carbon.LinkHelper:URI
+	class = Carbon.LinkHelper:Class
+}
