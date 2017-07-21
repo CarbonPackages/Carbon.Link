@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:Asset) < prototype(Neos.Fusion:Case) {
+prototype(Carbon.Link:Asset) < prototype(Neos.Fusion:Case) {
 	property = ${property ? property : 'link'}
 	read = ${q(node).property(this.property)}
 	asset = ${asset ? asset : this.read ? Neos.Link.convertUriToObject(this.read) : false}

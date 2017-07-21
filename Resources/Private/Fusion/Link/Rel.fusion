@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:Rel) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:Rel) < prototype(Neos.Fusion:Value) {
 	property = ${property ? property : 'link'}
 	rel = 'noopener'
 
@@ -8,7 +8,7 @@ prototype(Carbon.LinkHelper:Rel) < prototype(Neos.Fusion:Value) {
 	}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.LinkHelper:Type {
+		@context.linkType = Carbon.Link:Type {
 			read = ${read}
 		}
 		inBackend {

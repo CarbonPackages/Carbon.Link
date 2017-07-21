@@ -1,11 +1,11 @@
-Carbon.LinkHelper Package for Neos CMS
+Carbon.Link Package for Neos CMS
 ======================================
 
-[![Latest Stable Version](https://poser.pugx.org/carbon/linkhelper/v/stable)](https://packagist.org/packages/carbon/linkhelper)
-[![Total Downloads](https://poser.pugx.org/carbon/linkhelper/downloads)](https://packagist.org/packages/carbon/linkhelper)
-[![License](https://poser.pugx.org/carbon/linkhelper/license)](https://packagist.org/packages/carbon/linkhelper)
+[![Latest Stable Version](https://poser.pugx.org/carbon/link/v/stable)](https://packagist.org/packages/carbon/link)
+[![Total Downloads](https://poser.pugx.org/carbon/link/downloads)](https://packagist.org/packages/carbon/link)
+[![License](https://poser.pugx.org/carbon/link/license)](https://packagist.org/packages/carbon/link)
 
-This package provides some fusion helper for link editor. 
+This package provides some fusion helper for link editor.
 
 
 License

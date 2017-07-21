@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:Content) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
 	property = ${property ? property : 'link'}
 	@context {
 		property = ${this.property}
@@ -7,13 +7,13 @@ prototype(Carbon.LinkHelper:Content) < prototype(Neos.Fusion:Value) {
 	@ignoreProperties = ${['property']}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.LinkHelper:Type {
+		@context.linkType = Carbon.Link:Type {
 			read = ${read}
 		}
 
 		isAsset {
 			condition = ${linkType == 'asset'}
-			renderer = Carbon.LinkHelper:Asset {
+			renderer = Carbon.Link:Asset {
 				read = ${read}
 			}
 		}

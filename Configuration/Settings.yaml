@@ -1,5 +1,5 @@
 Carbon:
-  LinkHelper:
+  Link:
     externalTarget: _blank
     assetExternal: 'image,video,pdf'
     instanceOfDocument: '[instanceof Neos.Neos:Document]'
@@ -9,4 +9,4 @@ Neos:
   Neos:
     fusion:
       autoInclude:
-        Carbon.LinkHelper: true
+        Carbon.Link: true

@@ -1,5 +1,5 @@
 {
-    "name": "carbon/linkhelper",
+    "name": "carbon/link",
     "type": "neos-plugin",
     "license": "MIT",
     "description": "Link helper for Neos CMS",
@@ -23,14 +23,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Carbon\\LinkHelper\\": "Classes"
+            "Carbon\\Link\\": "Classes"
         }
     },
     "extra": {
         "marketplace-account": "me@jonnitto.ch",
-        "installer-name": "Carbon.LinkHelper",
+        "installer-name": "Carbon.Link",
         "neos": {
-            "package-key": "Carbon.LinkHelper"
+            "package-key": "Carbon.Link"
         }
     }
 }

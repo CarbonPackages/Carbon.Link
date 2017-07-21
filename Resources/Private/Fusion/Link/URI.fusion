@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:URI) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
 	property = ${property ? property : 'link'}
 	backendLink = false
 	@context {
@@ -6,7 +6,7 @@ prototype(Carbon.LinkHelper:URI) < prototype(Neos.Fusion:Value) {
 		backendLink = ${this.backendLink}
 	}
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.LinkHelper:Type {
+		@context.linkType = Carbon.Link:Type {
 			read = ${read}
 		}
 		isBackend {
@@ -34,5 +34,5 @@ prototype(Carbon.LinkHelper:URI) < prototype(Neos.Fusion:Value) {
 		}
 	}
 
-	@if.isValidLink = Carbon.LinkHelper:Valid
+	@if.isValidLink = Carbon.Link:Valid
 }

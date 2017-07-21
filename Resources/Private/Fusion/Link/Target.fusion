@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:Target) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:Target) < prototype(Neos.Fusion:Value) {
 	property = ${property ? property : 'link'}
 	target = ${Configuration.setting('Carbon.LinkHelper.externalTarget')}
 	assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.LinkHelper.assetExternal'))}
@@ -10,7 +10,7 @@ prototype(Carbon.LinkHelper:Target) < prototype(Neos.Fusion:Value) {
 	}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.LinkHelper:Type {
+		@context.linkType = Carbon.Link:Type {
 			read = ${read}
 		}
 		isAsset {

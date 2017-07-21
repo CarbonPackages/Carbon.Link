@@ -1,4 +1,4 @@
-'Carbon.LinkHelper:Link':
+'Carbon.Link:Link':
   abstract: true
   ui:
     inspector:

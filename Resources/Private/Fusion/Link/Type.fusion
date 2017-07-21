@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:Type) < prototype(Neos.Fusion:Case) {
+prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
 	property = ${property ? property : 'link'}
 	read = ${q(node).property(this.property)}
 

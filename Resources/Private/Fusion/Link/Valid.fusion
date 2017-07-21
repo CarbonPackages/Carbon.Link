@@ -1,15 +1,15 @@
 # Check if the Link is valid and possible (Hidden parent Pages)
-prototype(Carbon.LinkHelper:Valid) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:Valid) < prototype(Neos.Fusion:Value) {
 	property = ${property ? property : 'link'}
 	@context.read = ${q(node).property(this.property)}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.LinkHelper:Type {
+		@context.linkType = Carbon.Link:Type {
 			read = ${read}
 		}
 		isNode {
 			condition = ${linkType == 'node'}
-			renderer = Carbon.LinkHelper:VisibleParents {
+			renderer = Carbon.Link:VisibleParents {
 				item = ${Neos.Link.convertUriToObject(read, documentNode)}
 			}
 		}
@@ -25,7 +25,7 @@ prototype(Carbon.LinkHelper:Valid) < prototype(Neos.Fusion:Value) {
 	}
 }
 
-prototype(Carbon.LinkHelper:ValidOrBackend) < prototype(Carbon.LinkHelper:Valid) {
+prototype(Carbon.Link:ValidOrBackend) < prototype(Carbon.Link:Valid) {
 	value.isBackend {
 		condition = ${node.context.inBackend}
 		renderer = true

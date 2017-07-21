@@ -1,4 +1,4 @@
-prototype(Carbon.LinkHelper:TagName) < prototype(Neos.Fusion:Value) {
+prototype(Carbon.Link:TagName) < prototype(Neos.Fusion:Value) {
 	property = 'link'
 	linkTagName = 'a'
 	defaultTagName = 'span'
