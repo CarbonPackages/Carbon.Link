@@ -1,7 +1,7 @@
 prototype(Carbon.Link:Attributes) < prototype(Neos.Fusion:Attributes) {
-	property = 'link'
-	@context.property = ${this.property}
-	@ignoreProperties = ${['property']}
+	link = ${link ? link : false}
+	@context.link = ${this.link}
+	@ignoreProperties = ${['link']}
 
 	rel = Carbon.Link:Rel
 	target = Carbon.Link:Target

@@ -1,29 +1,29 @@
 prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
-	property = ${property ? property : 'link'}
+	link = ${link ? link : false}
 	backendLink = false
+
 	@context {
-		read = ${q(node).property(this.property)}
+		link = ${this.link}
 		backendLink = ${this.backendLink}
 	}
+
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type {
-			read = ${read}
-		}
+		@context.linkType = Carbon.Link:Type
 		isBackend {
 			condition = ${node.context.inBackend && !backendLink ? true : false}
 			renderer = '#'
 		}
 		isNode {
 			condition = ${linkType == 'node'}
-			renderer = Neos.Neos:NodeUri {
-				@context.nodeObject = ${Neos.Link.convertUriToObject(read, node)}
-				node = ${q(nodeObject).closest(Configuration.setting('Carbon.LinkHelper.instanceOfDocument')).get(0)}
-				section = ${q(nodeObject).is(Configuration.setting('Carbon.LinkHelper.instanceOfDocument')) ? false : Configuration.setting('Carbon.LinkHelper.prependIdentifier') + nodeObject.identifier}
+			renderer = NodeUri {
+				@context.nodeObject = ${Neos.Link.convertUriToObject(link, node)}
+				node = ${q(nodeObject).closest(Configuration.setting('Carbon.Link.instanceOfDocument')).get(0)}
+				section = ${q(nodeObject).is(Configuration.setting('Carbon.Link.instanceOfDocument')) ? false : Configuration.setting('Carbon.Link.prependIdentifier') + nodeObject.identifier}
 			}
 		}
 		isAssetOrExternal {
-			condition = ${read}
-			renderer = ${read}
+			condition = ${link}
+			renderer = ${link}
 			renderer.@process.convertUris = ConvertUris {
 				forceConversion = true
 			}

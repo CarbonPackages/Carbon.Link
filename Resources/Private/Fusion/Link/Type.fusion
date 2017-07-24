@@ -1,28 +1,24 @@
 prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
-	property = ${property ? property : 'link'}
-	read = ${q(node).property(this.property)}
+	link = ${link ? link : false}
 
-	@context {
-		read = ${this.read}
-		scheme = ${Neos.Link.getScheme(this.read)}
-	}
+	@context.scheme = ${Neos.Link.getScheme(this.link)}
 
-	@ignoreProperties = ${['property','read']}
+	@ignoreProperties = ${['link']}
 
 	hasScheme {
 		condition = ${scheme}
 		renderer = ${scheme}
 	}
 	isHash {
-		condition = ${String.startsWith(read, '#')}
+		condition = ${String.startsWith(link, '#')}
 		renderer = 'hash'
 	}
 	isEmail {
-		condition = ${String.startsWith(read, 'mailto:')}
+		condition = ${String.startsWith(link, 'mailto:')}
 		renderer = 'mail'
 	}
 	isExternal {
-		condition = ${read}
+		condition = ${link}
 		renderer = 'external'
 	}
 	noLink {

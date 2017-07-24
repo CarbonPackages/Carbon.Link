@@ -1,22 +1,20 @@
 prototype(Carbon.Link:Target) < prototype(Neos.Fusion:Value) {
-	property = ${property ? property : 'link'}
-	target = ${Configuration.setting('Carbon.LinkHelper.externalTarget')}
-	assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.LinkHelper.assetExternal'))}
+	link = ${link ? link : false}
+	target = ${Configuration.setting('Carbon.Link.externalTarget')}
+	assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.Link.assetExternal'))}
 
 	@context {
-		read = ${q(node).property(this.property)}
+		link = ${this.link}
 		target = ${this.target}
 		assetExternal = ${this.assetExternal}
 	}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type {
-			read = ${read}
-		}
+		@context.linkType = Carbon.Link:Type
 		isAsset {
 			condition = ${linkType == 'asset'}
 			renderer = Neos.Fusion:Value {
-				mediatype = ${String.toLowerCase(Neos.Link.convertUriToObject(read).resource.mediatype)}
+				mediatype = ${String.toLowerCase(Neos.Link.convertUriToObject(link).resource.mediatype)}
 				regex = ${'(' + String.replace(assetExternal, ',', '|') + ')'}
 				value = ${String.pregMatch(this.mediatype, this.regex)[0] ? target : false}
 			}

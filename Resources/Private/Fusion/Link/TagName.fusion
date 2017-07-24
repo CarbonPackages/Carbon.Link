@@ -1,8 +1,6 @@
 prototype(Carbon.Link:TagName) < prototype(Neos.Fusion:Value) {
-	property = 'link'
+	link = ${link ? link : false}
 	linkTagName = 'a'
 	defaultTagName = 'span'
-
-	read = ${q(node).property(this.property)}
-	value = ${this.read ? this.linkTagName : this.defaultTagName}
+	value = ${this.link ? this.linkTagName : this.defaultTagName}
 }

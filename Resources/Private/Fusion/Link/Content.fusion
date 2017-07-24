@@ -1,44 +1,37 @@
 prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
-	property = ${property ? property : 'link'}
-	@context {
-		property = ${this.property}
-		read = ${q(node).property(this.property)}
-	}
-	@ignoreProperties = ${['property']}
+	link = ${link ? link : false}
+	@context.link = ${this.link}
+	@ignoreProperties = ${['link']}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type {
-			read = ${read}
-		}
+		@context.linkType = Carbon.Link:Type
 
 		isAsset {
 			condition = ${linkType == 'asset'}
-			renderer = Carbon.Link:Asset {
-				read = ${read}
-			}
+			renderer = Carbon.Link:Asset
 		}
 		isNode {
 			condition = ${linkType == 'node'}
 			renderer = Neos.Fusion:Value {
-				node = ${Neos.Link.convertUriToObject(read, documentNode)}
+				node = ${Neos.Link.convertUriToObject(link, documentNode)}
 				value = ${q(this.node).property('title')}
 			}
 		}
 		isEmail {
 			condition = ${linkType == 'mail'}
-			renderer = ${String.replace(read, 'mailto:', '')}
+			renderer = ${String.replace(link, 'mailto:', '')}
 		}
 		isHttp {
-			condition = ${String.startsWith(read, 'http')}
-			renderer = ${String.pregReplace(read, '/^http(s)?:\/\//', '')}
+			condition = ${String.startsWith(link, 'http')}
+			renderer = ${String.pregReplace(link, '/^http(s)?:\/\//', '')}
 		}
 		isDoubleSlash {
-			condition = ${String.startsWith(read, '//')}
-			renderer = ${String.pregReplace(read, '/^\/\//', '')}
+			condition = ${String.startsWith(link, '//')}
+			renderer = ${String.pregReplace(link, '/^\/\//', '')}
 		}
 		fallback {
 			condition = ${linkType ? true : false}
-			renderer = ${read}
+			renderer = ${link}
 		}
 		noLink {
 			condition = true

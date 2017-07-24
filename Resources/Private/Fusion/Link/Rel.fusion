@@ -1,16 +1,14 @@
 prototype(Carbon.Link:Rel) < prototype(Neos.Fusion:Value) {
-	property = ${property ? property : 'link'}
+	link = ${link ? link : false}
 	rel = 'noopener'
 
 	@context {
-		read = ${q(node).property(this.property)}
+		link = ${this.link}
 		rel = ${this.rel}
 	}
 
 	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type {
-			read = ${read}
-		}
+		@context.linkType = Carbon.Link:Type
 		inBackend {
 			condition = ${node.context.inBackend}
 			renderer = false
