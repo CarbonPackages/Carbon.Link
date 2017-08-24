@@ -4,6 +4,7 @@ Carbon:
     assetExternal: 'image,video,pdf'
     instanceOfDocument: '[instanceof Neos.Neos:Document]'
     prependIdentifier: id-
+    defaultPhoneCountryCode: false
 
 Neos:
   Neos:
