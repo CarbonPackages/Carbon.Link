@@ -1,28 +1,28 @@
 prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
-	link = ${link ? link : false}
+    link = ${link ? link : false}
 
-	@context.scheme = ${Neos.Link.getScheme(this.link)}
+    @context.scheme = ${Neos.Link.getScheme(this.link)}
 
-	@ignoreProperties = ${['link']}
+    @ignoreProperties = ${['link']}
 
-	hasScheme {
-		condition = ${scheme}
-		renderer = ${scheme}
-	}
-	isHash {
-		condition = ${String.startsWith(link, '#')}
-		renderer = 'hash'
-	}
-	isEmail {
-		condition = ${String.startsWith(link, 'mailto:')}
-		renderer = 'mail'
-	}
-	isExternal {
-		condition = ${link}
-		renderer = 'external'
-	}
-	noLink {
-		condition = true
-		renderer = false
-	}
+    hasScheme {
+        condition = ${scheme}
+        renderer = ${scheme}
+    }
+    isHash {
+        condition = ${String.startsWith(link, '#')}
+        renderer = 'hash'
+    }
+    isEmail {
+        condition = ${String.startsWith(link, 'mailto:')}
+        renderer = 'mail'
+    }
+    isExternal {
+        condition = ${link}
+        renderer = 'external'
+    }
+    noLink {
+        condition = true
+        renderer = false
+    }
 }

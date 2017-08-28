@@ -1,34 +1,34 @@
 prototype(Carbon.Link:Rel) < prototype(Neos.Fusion:Value) {
-	link = ${link ? link : false}
-	rel = 'noopener'
+    link = ${link ? link : false}
+    rel = 'noopener'
 
-	@context {
-		link = ${this.link}
-		rel = ${this.rel}
-	}
+    @context {
+        link = ${this.link}
+        rel = ${this.rel}
+    }
 
-	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type
-		inBackend {
-			condition = ${node.context.inBackend}
-			renderer = false
-			@position = 'start 1'
-		}
-		isNode {
-			condition = ${linkType == 'node'}
-			renderer = false
-		}
-		isHash {
-			condition = ${linkType == 'hash'}
-			renderer = false
-		}
-		isExternal {
-			condition = ${linkType == 'external'}
-			renderer = ${rel}
-		}
-		default {
-			condition = true
-			renderer = false
-		}
-	}
+    value = Neos.Fusion:Case {
+        @context.linkType = Carbon.Link:Type
+        inBackend {
+            condition = ${node.context.inBackend}
+            renderer = false
+            @position = 'start 1'
+        }
+        isNode {
+            condition = ${linkType == 'node'}
+            renderer = false
+        }
+        isHash {
+            condition = ${linkType == 'hash'}
+            renderer = false
+        }
+        isExternal {
+            condition = ${linkType == 'external'}
+            renderer = ${rel}
+        }
+        default {
+            condition = true
+            renderer = false
+        }
+    }
 }

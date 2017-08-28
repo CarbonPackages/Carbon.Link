@@ -1,11 +1,11 @@
 prototype(Carbon.Link:Class) < prototype(Neos.Fusion:Value) {
-	link = ${link ? link : false}
-	@context.link = ${this.link}
+    link = ${link ? link : false}
+    @context.link = ${this.link}
 
-	prepend = 'link'
-	divider = '-'
+    prepend = 'link'
+    divider = '-'
 
-	linkType = Carbon.Link:Type
+    linkType = Carbon.Link:Type
 
-	value = ${this.linkType ? this.prepend + this.divider + this.linkType : false}
+    value = ${this.linkType ? this.prepend + this.divider + this.linkType : false}
 }

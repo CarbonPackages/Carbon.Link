@@ -1,6 +1,7 @@
 prototype(Carbon.Link:TagName) < prototype(Neos.Fusion:Value) {
-	link = ${link ? link : false}
-	linkTagName = 'a'
-	defaultTagName = 'span'
-	value = ${this.link ? this.linkTagName : this.defaultTagName}
+    link = ${link ? link : false}
+    linkTagName = 'a'
+    defaultTagName = 'span'
+    backendLink = ${backendLink ? backendLink : false}
+    value = ${this.link && (node.context.live || this.backendLink) ? this.linkTagName : this.defaultTagName}
 }

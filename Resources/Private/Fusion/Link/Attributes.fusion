@@ -1,10 +1,14 @@
 prototype(Carbon.Link:Attributes) < prototype(Neos.Fusion:Attributes) {
-	link = ${link ? link : false}
-	@context.link = ${this.link}
-	@ignoreProperties = ${['link']}
+    link = ${link ? link : false}
+    backendLink = ${backendLink ? backendLink : false}
+    @context {
+        link = ${this.link}
+        backendLink = ${this.backendLink}
+    }
+    @ignoreProperties = ${['link', 'backendLink']}
 
-	rel = Carbon.Link:Rel
-	target = Carbon.Link:Target
-	href = Carbon.Link:URI
-	class = Carbon.Link:Class
+    rel = Carbon.Link:Rel
+    target = Carbon.Link:Target
+    href = Carbon.Link:URI
+    class = Carbon.Link:Class
 }

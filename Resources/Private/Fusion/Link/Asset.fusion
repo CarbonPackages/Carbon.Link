@@ -1,15 +1,15 @@
 prototype(Carbon.Link:Asset) < prototype(Neos.Fusion:Case) {
-	link = ${link ? link : false}
-	asset = ${asset ? asset : link ? Neos.Link.convertUriToObject(link) : false}
-	@context.asset = ${this.asset}
-	@ignoreProperties = ${['link', 'asset']}
+    link = ${link ? link : false}
+    asset = ${asset ? asset : link ? Neos.Link.convertUriToObject(link) : false}
+    @context.asset = ${this.asset}
+    @ignoreProperties = ${['link', 'asset']}
 
-	hasTitle {
-		condition = ${asset.title ? true : false}
-		renderer = ${asset.title}
-	}
-	hasAsset {
-		condition = ${asset ? true : false}
-		renderer = ${String.replace(String.replace(asset.resource.filename, '_', ' '), '.' + asset.resource.fileextension, '')}
-	}
+    hasTitle {
+        condition = ${asset.title ? true : false}
+        renderer = ${asset.title}
+    }
+    hasAsset {
+        condition = ${asset ? true : false}
+        renderer = ${String.replace(String.replace(asset.resource.filename, '_', ' '), '.' + asset.resource.fileextension, '')}
+    }
 }

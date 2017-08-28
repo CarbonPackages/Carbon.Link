@@ -1,31 +1,31 @@
 prototype(Carbon.Link:Target) < prototype(Neos.Fusion:Value) {
-	link = ${link ? link : false}
-	target = ${Configuration.setting('Carbon.Link.externalTarget')}
-	assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.Link.assetExternal'))}
+    link = ${link ? link : false}
+    target = ${Configuration.setting('Carbon.Link.externalTarget')}
+    assetExternal = ${String.toLowerCase(Configuration.setting('Carbon.Link.assetExternal'))}
 
-	@context {
-		link = ${this.link}
-		target = ${this.target}
-		assetExternal = ${this.assetExternal}
-	}
+    @context {
+        link = ${this.link}
+        target = ${this.target}
+        assetExternal = ${this.assetExternal}
+    }
 
-	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type
-		isAsset {
-			condition = ${linkType == 'asset'}
-			renderer = Neos.Fusion:Value {
-				mediatype = ${String.toLowerCase(Neos.Link.convertUriToObject(link).resource.mediatype)}
-				regex = ${'(' + String.replace(assetExternal, ',', '|') + ')'}
-				value = ${String.pregMatch(this.mediatype, this.regex)[0] ? target : false}
-			}
-		}
-		isExternal {
-			condition = ${linkType == 'external'}
-			renderer = ${target}
-		}
-		default {
-			condition = true
-			renderer = false
-		}
-	}
+    value = Neos.Fusion:Case {
+        @context.linkType = Carbon.Link:Type
+        isAsset {
+            condition = ${linkType == 'asset'}
+            renderer = Neos.Fusion:Value {
+                mediatype = ${String.toLowerCase(Neos.Link.convertUriToObject(link).resource.mediatype)}
+                regex = ${'(' + String.replace(assetExternal, ',', '|') + ')'}
+                value = ${String.pregMatch(this.mediatype, this.regex)[0] ? target : false}
+            }
+        }
+        isExternal {
+            condition = ${linkType == 'external'}
+            renderer = ${target}
+        }
+        default {
+            condition = true
+            renderer = false
+        }
+    }
 }

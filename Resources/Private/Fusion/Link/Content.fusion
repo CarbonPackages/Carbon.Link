@@ -1,42 +1,42 @@
 prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
-	link = ${link ? link : false}
-	@context.link = ${this.link}
-	@ignoreProperties = ${['link']}
+    link = ${link ? link : false}
+    @context.link = ${this.link}
+    @ignoreProperties = ${['link']}
 
-	value = Neos.Fusion:Case {
-		@context.linkType = Carbon.Link:Type
+    value = Neos.Fusion:Case {
+        @context.linkType = Carbon.Link:Type
 
-		isAsset {
-			condition = ${linkType == 'asset'}
-			renderer = Carbon.Link:Asset
-		}
-		isNode {
-			condition = ${linkType == 'node'}
-			renderer = Neos.Fusion:Value {
-				node = ${Neos.Link.convertUriToObject(link, documentNode)}
-				value = ${q(this.node).property('title')}
-			}
-		}
-		isEmail {
-			condition = ${linkType == 'mail'}
-			renderer = ${String.replace(link, 'mailto:', '')}
-		}
-		isHttp {
-			condition = ${String.startsWith(link, 'http')}
-			renderer = ${String.pregReplace(link, '/^http(s)?:\/\//', '')}
-		}
-		isDoubleSlash {
-			condition = ${String.startsWith(link, '//')}
-			renderer = ${String.pregReplace(link, '/^\/\//', '')}
-		}
-		fallback {
-			condition = ${linkType ? true : false}
-			renderer = ${link}
-		}
-		noLink {
-			condition = true
-			renderer = false
-		}
-	}
+        isAsset {
+            condition = ${linkType == 'asset'}
+            renderer = Carbon.Link:Asset
+        }
+        isNode {
+            condition = ${linkType == 'node'}
+            renderer = Neos.Fusion:Value {
+                node = ${Neos.Link.convertUriToObject(link, documentNode)}
+                value = ${q(this.node).property('title')}
+            }
+        }
+        isEmail {
+            condition = ${linkType == 'mail'}
+            renderer = ${String.replace(link, 'mailto:', '')}
+        }
+        isHttp {
+            condition = ${String.startsWith(link, 'http')}
+            renderer = ${String.pregReplace(link, '/^http(s)?:\/\//', '')}
+        }
+        isDoubleSlash {
+            condition = ${String.startsWith(link, '//')}
+            renderer = ${String.pregReplace(link, '/^\/\//', '')}
+        }
+        fallback {
+            condition = ${linkType ? true : false}
+            renderer = ${link}
+        }
+        noLink {
+            condition = true
+            renderer = false
+        }
+    }
 
 }

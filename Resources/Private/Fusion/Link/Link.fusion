@@ -1,11 +1,15 @@
 prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
-	node = null
-	link = ${this.node ? 'node://' + this.node.identifier : link ? link : false}
+    node = null
+    link = ${this.node ? 'node://' + this.node.identifier : link ? link : false}
+    backendLink = false
 
-	@context.link = ${this.link}
-	@if.hasLink = ${this.link ? true : false}
+    @context {
+        link = ${this.link}
+        backendLink = ${this.backendLink}
+    }
+    @if.hasLink = ${this.link ? true : false}
 
-	tagName = 'a'
-	attributes = Carbon.Link:Attributes
-	content = Carbon.Link:Content
+    tagName = Carbon.Link:TagName
+    attributes = Carbon.Link:Attributes
+    content = Carbon.Link:Content
 }
