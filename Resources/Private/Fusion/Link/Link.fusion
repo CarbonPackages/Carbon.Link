@@ -4,7 +4,10 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     backendLink = false
     additionalClass = null
     // Make sure that we have a string
-    additionalClass.@process.convertToString = ${Type.isArray(value) ? Array.join(value, this.seperator) : String.toString(value)}
+    additionalClass.@process {
+      convertToString = ${Type.isArray(value) ? Array.join(value, ' ') : String.toString(value)}
+      trimString = ${String.trim(value)}
+    }
 
     @context {
         link = ${this.link}
