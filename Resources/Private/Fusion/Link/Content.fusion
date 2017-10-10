@@ -38,5 +38,4 @@ prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
             renderer = false
         }
     }
-
 }

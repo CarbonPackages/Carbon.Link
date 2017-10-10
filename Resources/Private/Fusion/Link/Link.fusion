@@ -3,6 +3,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     link = ${this.node ? 'node://' + this.node.identifier : link ? link : false}
     backendLink = false
     additionalClass = null
+    defaultTagName = 'span'
     // Make sure that we have a string
     additionalClass.@process {
       convertToString = ${Type.isArray(value) ? Array.join(value, ' ') : String.toString(value)}
@@ -13,10 +14,13 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         link = ${this.link}
         backendLink = ${this.backendLink}
         additionalClass = ${this.additionalClass}
+        defaultTagName = ${this.defaultTagName}
     }
     @if.hasLink = ${this.link ? true : false}
 
-    tagName = Carbon.Link:TagName
+    tagName = Carbon.Link:TagName {
+        defaultTagName = ${defaultTagName}
+    }
     attributes = Carbon.Link:Attributes
     content = Carbon.Link:Content
 }
