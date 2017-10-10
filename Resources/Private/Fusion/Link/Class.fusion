@@ -3,6 +3,7 @@ prototype(Carbon.Link:Class) < prototype(Neos.Fusion:RawArray) {
 
     @context.link = ${this.link}
 
+    valid = Carbon.Link:Valid
     prepend = 'link'
     divider = '-'
 
@@ -11,5 +12,5 @@ prototype(Carbon.Link:Class) < prototype(Neos.Fusion:RawArray) {
     @ignoreProperties = ${['link', 'prepend', 'divider', 'linkType']}
 
     additionalClass = ${additionalClass}
-    value = ${this.linkType ? this.prepend + this.divider + this.linkType : false}
+    value = ${this.linkType && this.valid ? this.prepend + this.divider + this.linkType : false}
 }

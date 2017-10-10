@@ -3,5 +3,7 @@ prototype(Carbon.Link:TagName) < prototype(Neos.Fusion:Value) {
     linkTagName = 'a'
     defaultTagName = 'span'
     backendLink = ${backendLink ? backendLink : false}
-    value = ${this.link && (node.context.live || this.backendLink) ? this.linkTagName : this.defaultTagName}
+    @context.link = ${this.link}
+    valid = Carbon.Link:Valid
+    value = ${this.link && this.valid && (node.context.live || this.backendLink) ? this.linkTagName : this.defaultTagName}
 }

@@ -1,7 +1,7 @@
 prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
     link = ${link ? link : false}
     @context.link = ${this.link}
-    @ignoreProperties = ${['link']}
+    @if.isValid = Carbon.Link:Valid
 
     value = Neos.Fusion:Case {
         @context.linkType = Carbon.Link:Type

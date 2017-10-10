@@ -3,5 +3,5 @@ prototype(Carbon.Link:VisibleParents) < prototype(Neos.Fusion:Value) {
     visibleCount = ${this.item ? q(this.item).parents().count() : false}
     invisibleCount = ${this.item ? q(this.item).context({'invisibleContentShown': true}).parents().count() : false}
 
-    value = ${this.visibleCount == this.invisibleCount ? true : false}
+    value = ${(this.visibleCount == this.invisibleCount) && this.item ? true : false}
 }

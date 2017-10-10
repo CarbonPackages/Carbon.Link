@@ -16,7 +16,9 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         additionalClass = ${this.additionalClass}
         defaultTagName = ${this.defaultTagName}
     }
-    @if.hasLink = ${this.link ? true : false}
+    valid = Carbon.Link:Valid
+
+    @if.hasLink = ${this.link && this.valid ? true : false}
 
     tagName = Carbon.Link:TagName {
         defaultTagName = ${defaultTagName}
