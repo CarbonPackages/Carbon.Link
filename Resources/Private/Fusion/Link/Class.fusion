@@ -9,8 +9,13 @@ prototype(Carbon.Link:Class) < prototype(Neos.Fusion:RawArray) {
 
     linkType = Carbon.Link:Type
 
-    @ignoreProperties = ${['link', 'prepend', 'divider', 'linkType']}
+    @ignoreProperties = ${['link', 'valid', 'prepend', 'divider', 'linkType']}
 
     additionalClass = ${additionalClass}
+    additionalClass.@process {
+      convertToString = ${Type.isArray(value) ? Array.join(value, ' ') : String.toString(value)}
+      trimString = ${String.trim(value)}
+    }
+
     value = ${this.linkType && this.valid ? this.prepend + this.divider + this.linkType : false}
 }

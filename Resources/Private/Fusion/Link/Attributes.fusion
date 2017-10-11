@@ -1,7 +1,12 @@
 prototype(Carbon.Link:Attributes) < prototype(Neos.Fusion:Attributes) {
     link = ${link ? link : false}
     backendLink = ${backendLink ? backendLink : false}
-    additionalClass = ${additionalClass}
+    additionalClass = ${additionalClass ? additionalClass : false}
+    additionalClass.@process {
+      convertToString = ${Type.isArray(value) ? Array.join(value, ' ') : String.toString(value)}
+      trimString = ${String.trim(value)}
+    }
+
     @context {
         link = ${this.link}
         backendLink = ${this.backendLink}
