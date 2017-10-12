@@ -1,7 +1,8 @@
 prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
     link = ${link ? link : false}
     @context.link = ${this.link}
-    @if.isValid = Carbon.Link:Valid
+    isValid = Carbon.Link:Valid
+    @if.isValid = ${this.isValid || renderDefaultTagIfNoLink ? true : false}
 
     value = Neos.Fusion:Case {
         @context.linkType = Carbon.Link:Type

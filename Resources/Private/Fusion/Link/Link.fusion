@@ -16,6 +16,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         backendLink = ${this.backendLink}
         additionalClass = ${this.additionalClass}
         defaultTagName = ${this.defaultTagName}
+        renderDefaultTagIfNoLink = ${this.renderDefaultTagIfNoLink}
     }
     valid = Carbon.Link:Valid
 
