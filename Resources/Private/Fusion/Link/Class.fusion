@@ -17,5 +17,7 @@ prototype(Carbon.Link:Class) < prototype(Neos.Fusion:RawArray) {
       trimString = ${String.trim(value)}
     }
 
-    value = ${this.linkType && this.valid ? this.prepend + this.divider + this.linkType : false}
+    value = ${this.linkType && this.valid ? this.prepend + this.divider + this.linkType : null}
+
+    @process.clearIfEmpty = ${this.value || this.additionalClass ? value : null}
 }
