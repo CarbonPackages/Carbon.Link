@@ -5,7 +5,9 @@ prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
     @if.isValid = ${this.isValid || renderDefaultTagIfNoLink ? true : false}
 
     value = Neos.Fusion:Case {
-        @context.linkType = Carbon.Link:Type
+        @context.linkType = Carbon.Link:Type {
+            isShortcut.condition = false
+        }
 
         isAsset {
             condition = ${linkType == 'asset'}

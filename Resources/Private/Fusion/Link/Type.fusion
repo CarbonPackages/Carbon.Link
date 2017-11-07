@@ -1,9 +1,19 @@
 prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
     link = ${link ? link : false}
 
-    @context.scheme = ${Neos.Link.getScheme(this.link)}
+    @context {
+        scheme = ${Neos.Link.getScheme(this.link)}
+        node = ${Neos.Link.convertUriToObject(this.link, node)}
+    }
 
     @ignoreProperties = ${['link']}
+
+    isShortcut {
+        condition = ${q(node).is('[instanceof Neos.Neos:Shortcut]') && q(node).property('targetMode') == 'selectedTarget'}
+        renderer = Carbon.Link:Type {
+            link = ${q(node).property('target')}
+        }
+    }
 
     hasScheme {
         condition = ${scheme}
