@@ -3,6 +3,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     link = ${this.node ? 'node://' + this.node.identifier : link ? link : false}
     backendLink = false
     additionalClass = null
+    title = null
     defaultTagName = 'span'
     renderDefaultTagIfNoLink = false
     // Make sure that we have a string
@@ -17,6 +18,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         additionalClass = ${this.additionalClass}
         defaultTagName = ${this.defaultTagName}
         renderDefaultTagIfNoLink = ${this.renderDefaultTagIfNoLink}
+        title = ${this.title}
     }
     valid = Carbon.Link:Valid
 
@@ -25,6 +27,8 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     tagName = Carbon.Link:TagName {
         defaultTagName = ${defaultTagName}
     }
-    attributes = Carbon.Link:Attributes
+    attributes = Carbon.Link:Attributes {
+        title = ${title}
+    }
     content = Carbon.Link:Content
 }
