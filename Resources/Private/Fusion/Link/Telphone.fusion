@@ -1,7 +1,7 @@
 prototype(Carbon.Link:Telephone) < prototype(Neos.Fusion:Value) {
     defaultCountryCode = ${Configuration.setting('Carbon.Link.defaultPhoneCountryCode')}
 
-    value = null
+    value = ${value}
     value.@process {
         replacePlusWidth00 = ${String.replace(value, '+', '00')}
         removeSpaces = ${String.pregReplace(value, '/\s/', '')}
