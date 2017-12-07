@@ -3,7 +3,12 @@ Carbon.Link Package for Neos CMS
 
 [![Latest Stable Version](https://poser.pugx.org/carbon/link/v/stable)](https://packagist.org/packages/carbon/link)
 [![Total Downloads](https://poser.pugx.org/carbon/link/downloads)](https://packagist.org/packages/carbon/link)
-[![License](https://poser.pugx.org/carbon/link/license)](https://packagist.org/packages/carbon/link)
+[![License](https://poser.pugx.org/carbon/link/license)](https://packagist.org/packages/carbon/link)  
+[![GitHub forks](https://img.shields.io/github/forks/jonnitto/Carbon.Link.svg?style=social&label=Fork)](https://github.com/jonnitto/Carbon.Link/fork)
+[![GitHub stars](https://img.shields.io/github/stars/jonnitto/Carbon.Link.svg?style=social&label=Stars)](https://github.com/jonnitto/Carbon.Link/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/jonnitto/Carbon.Link.svg?style=social&label=Watch)](https://github.com/jonnitto/Carbon.Link/subscription)
+[![GitHub followers](https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow)](https://github.com/jonnitto/followers)
+[![Follow Jon on Twitter](https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow)](https://twitter.com/jonnitto)
 
 This package provides some fusion helper for link editor.
 
