@@ -15,7 +15,7 @@ prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
         }
         isNode {
             condition = ${linkType == 'node'}
-            renderer = NodeUri {
+            renderer = Neos.Neos:NodeUri {
                 @context.nodeObject = ${Neos.Link.convertUriToObject(link, node)}
                 node = ${q(nodeObject).closest(Configuration.setting('Carbon.Link.instanceOfDocument')).get(0)}
                 section = ${q(nodeObject).is(Configuration.setting('Carbon.Link.instanceOfDocument')) ? false : Configuration.setting('Carbon.Link.prependIdentifier') + nodeObject.identifier}
@@ -24,7 +24,7 @@ prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
         isAssetOrExternal {
             condition = ${link}
             renderer = ${link}
-            renderer.@process.convertUris = ConvertUris {
+            renderer.@process.convertUris = Neos.Neos:ConvertUris {
                 forceConversion = true
             }
         }
