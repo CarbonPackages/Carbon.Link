@@ -1,6 +1,10 @@
 prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
     link = ${link ? link : false}
-    @context.link = ${this.link}
+    contentKey = ${contentKey || 'title'}
+    @context {
+        link = ${this.link}
+        contentKey = ${this.contentKey}
+    }
     isValid = Carbon.Link:Valid
     @if.isValid = ${this.isValid || renderDefaultTagIfNoLink ? true : false}
 
@@ -17,7 +21,7 @@ prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
             condition = ${linkType == 'node'}
             renderer = Neos.Fusion:Value {
                 node = ${Neos.Link.convertUriToObject(link, documentNode)}
-                value = ${q(this.node).property('title')}
+                value = ${contentKey == 'title' ? q(this.node).property('title') : this.node.label}
             }
         }
         isEmail {

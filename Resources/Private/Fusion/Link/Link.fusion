@@ -6,6 +6,10 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     title = null
     defaultTagName = 'span'
     renderDefaultTagIfNoLink = false
+
+    // Can be 'label' or 'title'
+    contentKey = 'title'
+
     // Make sure that we have a string
     additionalClass.@process {
       convertToString = ${Type.isArray(value) ? Array.join(Carbon.Array.filter(value), ' ') : String.toString(value)}
@@ -19,6 +23,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         defaultTagName = ${this.defaultTagName}
         renderDefaultTagIfNoLink = ${this.renderDefaultTagIfNoLink}
         title = ${this.title}
+        contentKey = ${this.contentKey}
     }
     valid = Carbon.Link:Valid
 
