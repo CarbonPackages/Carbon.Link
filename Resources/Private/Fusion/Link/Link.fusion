@@ -6,6 +6,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     title = null
     defaultTagName = 'span'
     renderDefaultTagIfNoLink = false
+    style = null
 
     // Can be 'label' or 'title'
     contentKey = 'title'
@@ -24,6 +25,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
         renderDefaultTagIfNoLink = ${this.renderDefaultTagIfNoLink}
         title = ${this.title}
         contentKey = ${this.contentKey}
+        style = ${this.style}
     }
     valid = Carbon.Link:Valid
 
@@ -34,6 +36,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     }
     attributes = Carbon.Link:Attributes {
         title = ${title}
+        style = ${style}
     }
     content = Carbon.Link:Content
 }
