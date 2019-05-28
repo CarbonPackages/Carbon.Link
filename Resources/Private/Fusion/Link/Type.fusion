@@ -33,7 +33,7 @@ prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
         renderer = 'tel'
     }
     isAppLink {
-        condition = ${String.indexOf(link, '//') != -1}
+        condition = ${String.indexOf(link, '//') == -1}
         renderer = 'app'
     }
     isExternal {
