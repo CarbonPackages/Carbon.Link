@@ -28,6 +28,14 @@ prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
         condition = ${String.startsWith(link, 'mailto:')}
         renderer = 'mail'
     }
+    isTel {
+        condition = ${String.startsWith(link, 'tel:')}
+        renderer = 'tel'
+    }
+    isAppLink {
+        condition = ${String.indexOf(link, '//') != -1}
+        renderer = 'app'
+    }
     isExternal {
         condition = ${link}
         renderer = 'external'
