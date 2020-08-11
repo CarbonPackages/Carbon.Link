@@ -1,5 +1,6 @@
 prototype(Carbon.Link:Telephone) < prototype(Neos.Fusion:Value) {
     defaultCountryCode = ${Configuration.setting('Carbon.Link.defaultPhoneCountryCode')}
+    prepend = 'tel:'
 
     value = ${value}
     value.@process {
@@ -7,6 +8,6 @@ prototype(Carbon.Link:Telephone) < prototype(Neos.Fusion:Value) {
         removeSpaces = ${String.pregReplace(value, '/\s/', '')}
         removeZerosInBrackets = ${String.replace(value, '(0)', '')}
         makeLocalNumberInternational = ${this.defaultCountryCode ? String.pregReplace(value, '/^0([1-9])/', this.defaultCountryCode + '$1') : value}
-        prependTelProtocol = ${value ? 'tel:' + value : value}
+        prependTelProtocol = ${value && props.prepend ? props.prepend + value : value}
     }
 }
