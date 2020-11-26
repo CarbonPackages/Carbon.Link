@@ -6,6 +6,7 @@ prototype(Carbon.Link:Telephone) < prototype(Neos.Fusion:Value) {
     value.@process {
         replacePlusWidth00 = ${String.replace(value, '+', '00')}
         removeSpaces = ${String.pregReplace(value, '/\s/', '')}
+        removeDashed = ${String.pregReplace(value, '-', '')}
         removeZerosInBrackets = ${String.replace(value, '(0)', '')}
         makeLocalNumberInternational = ${this.defaultCountryCode ? String.pregReplace(value, '/^0([1-9])/', this.defaultCountryCode + '$1') : value}
         prependTelProtocol = ${value && this.prepend ? this.prepend + value : value}
