@@ -14,7 +14,7 @@ prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
 
     // Make sure that we have a string
     additionalClass.@process {
-      convertToString = ${Type.isArray(value) ? Array.join(Carbon.Array.filter(value), ' ') : String.toString(value)}
+      convertToString = ${Type.isArray(value) ? Array.join(Array.filter(value), ' ') : String.toString(value)}
       trimString = ${String.trim(value)}
     }
 
