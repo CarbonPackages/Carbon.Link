@@ -21,7 +21,7 @@ prototype(Carbon.Link:Target) < prototype(Neos.Fusion:Value) {
                     }
                     isNode {
                         condition = ${String.startsWith(link, 'node://')}
-                        renderer = ${q(Neos.Link.convertUriToObject(link, node)).property('target')}
+                        renderer = ${q(Neos.Link.convertUriToObject(link, documentNode)).property('target')}
                     }
                 }
                 object = ${String.startsWith(this.assetString, 'asset://') ? Neos.Link.convertUriToObject(this.assetString) : null}
