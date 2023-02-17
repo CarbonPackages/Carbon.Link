@@ -25,7 +25,7 @@ The `--no-update` command prevent the automatic update of the dependencies. Afte
 
 `Carbon.Link:Link` and the internal `Neos.Neos:NodeUri` make use of the commonly available `documentNode` context variable to obtain context information such as language and workspace and to calculate relative links. This variable is provided by default in the \Neos\Neos\View\FusionView, but not, for example, in the \Neos\Fusion\View\FusionView, which is mainly used for Model View Controller applications. Make sure that you manually retrieve the document node and add it to the view, e.g.
 
-```
+```php
 <?php
 
 class ArticlesController extends ActionController
@@ -35,7 +35,7 @@ class ArticlesController extends ActionController
     public function listAction(): void
     {
         $workspaceName = 'live';
-        $language = 'de';
+        $language = 'en';
 
         $contextProperties = [
             'workspaceName' => $workspaceName,
