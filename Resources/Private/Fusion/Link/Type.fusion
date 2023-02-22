@@ -3,7 +3,7 @@ prototype(Carbon.Link:Type) < prototype(Neos.Fusion:Case) {
 
     @context {
         scheme = ${Neos.Link.getScheme(this.link)}
-        node = ${Neos.Link.convertUriToObject(this.link, node)}
+        node = ${Neos.Link.convertUriToObject(this.link, documentNode)}
         link = ${this.link}
     }
 

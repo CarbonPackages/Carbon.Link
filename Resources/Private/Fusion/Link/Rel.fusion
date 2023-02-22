@@ -10,7 +10,7 @@ prototype(Carbon.Link:Rel) < prototype(Neos.Fusion:Value) {
     value = Neos.Fusion:Case {
         @context.linkType = Carbon.Link:Type
         inBackend {
-            condition = ${node.context.inBackend}
+            condition = ${documentNode.context.inBackend}
             renderer = false
             @position = 'start 1'
         }

@@ -1,6 +1,6 @@
 prototype(Carbon.Link:Asset) < prototype(Neos.Fusion:Case) {
     link = ${link ? link : false}
-    asset = ${asset ? asset : link ? Neos.Link.convertUriToObject(link, node) : false}
+    asset = ${asset ? asset : link ? Neos.Link.convertUriToObject(link, documentNode) : false}
     @context.asset = ${this.asset}
     @ignoreProperties = ${['link', 'asset']}
 
