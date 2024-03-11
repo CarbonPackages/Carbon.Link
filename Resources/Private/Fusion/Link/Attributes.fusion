@@ -1,4 +1,4 @@
-prototype(Carbon.Link:Attributes) < prototype(Neos.Fusion:Attributes) {
+prototype(Carbon.Link:Attributes) < prototype(Neos.Fusion:DataStructure) {
     link = ${link ? link : false}
     backendLink = ${backendLink ? backendLink : false}
     additionalClass = ${additionalClass ? additionalClass : false}

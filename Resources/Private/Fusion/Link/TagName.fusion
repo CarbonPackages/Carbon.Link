@@ -5,5 +5,5 @@ prototype(Carbon.Link:TagName) < prototype(Neos.Fusion:Value) {
     backendLink = ${backendLink ? backendLink : false}
     @context.link = ${this.link}
     valid = Carbon.Link:Valid
-    value = ${this.link && this.valid && (documentNode.context.live || this.backendLink) ? this.linkTagName : this.defaultTagName}
+    value = ${this.link && this.valid && (!renderingMode.isEdit || this.backendLink) ? this.linkTagName : this.defaultTagName}
 }

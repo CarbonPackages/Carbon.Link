@@ -10,7 +10,7 @@ prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
     value = Neos.Fusion:Case {
         @context.linkType = Carbon.Link:Type
         isBackend {
-            condition = ${documentNode.context.inBackend && !backendLink ? true : false}
+            condition = ${renderingMode.isEdit && !backendLink ? true : false}
             renderer = '#'
         }
         isNode {
@@ -18,7 +18,7 @@ prototype(Carbon.Link:URI) < prototype(Neos.Fusion:Value) {
             renderer = Neos.Neos:NodeUri {
                 nodeObject = ${Neos.Link.convertUriToObject(link, documentNode)}
                 node = ${q(this.nodeObject).closest(Configuration.setting('Carbon.Link.instanceOfDocument')).get(0)}
-                section = ${q(this.nodeObject).is(Configuration.setting('Carbon.Link.instanceOfDocument')) ? false : Configuration.setting('Carbon.Link.prependIdentifier') + nodeObject.identifier}
+                section = ${q(this.nodeObject).is(Configuration.setting('Carbon.Link.instanceOfDocument')) ? false : Configuration.setting('Carbon.Link.prependIdentifier') + nodeObject.nodeAggregateId.value}
             }
         }
         isAssetOrExternal {
