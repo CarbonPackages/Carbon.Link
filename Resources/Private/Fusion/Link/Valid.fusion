@@ -25,7 +25,7 @@ prototype(Carbon.Link:Valid) < prototype(Neos.Fusion:Value) {
 
 prototype(Carbon.Link:ValidOrBackend) < prototype(Carbon.Link:Valid) {
     value.isBackend {
-        condition = ${documentNode.context.inBackend}
+        condition = ${renderingMode.isEdit}
         renderer = true
         @position = 'start'
     }
