@@ -1,6 +1,6 @@
 prototype(Carbon.Link:Link) < prototype(Neos.Fusion:Tag) {
     node = null
-    link = ${this.node ? 'node://' + this.node.nodeAggregateId.value : link ? link : false}
+    link = ${this.node ? 'node://' + this.node.aggregateId : link ? link : false}
     backendLink = false
     additionalClass = null
     title = null

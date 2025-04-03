@@ -21,7 +21,7 @@ prototype(Carbon.Link:Content) < prototype(Neos.Fusion:Value) {
             condition = ${linkType == 'node'}
             renderer = Neos.Fusion:Value {
                 node = ${Neos.Link.convertUriToObject(link, documentNode)}
-                value = ${contentKey == 'title' ? q(this.node).property('title') : this.node.label}
+                value = ${contentKey == 'title' ? q(this.node).property('title') : Neos.Node.label(this.node)}
             }
         }
         isEmail {
